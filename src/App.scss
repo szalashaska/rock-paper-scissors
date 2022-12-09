@@ -1,0 +1,38 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// - Scissors Gradient: hsl(39, 89%, 49%) to hsl(40, 84%, 53%)
+// - Paper Gradient: hsl(230, 89%, 62%) to hsl(230, 89%, 65%)
+// - Rock Gradient: hsl(349, 71%, 52%) to hsl(349, 70%, 56%)
+// - Lizard Gradient: hsl(261, 73%, 60%) to hsl(261, 72%, 63%)
+// - Cyan: hsl(189, 59%, 53%) to hsl(189, 58%, 57%)
+
+:root {
+  --font-main: "Barlow Semi Condensed", sans-serif;
+  --dark-text: hsl(229, 25%, 31%);
+  --score-text: hsl(229, 64%, 46%);
+  --score-outline: hsl(217, 16%, 45%);
+  --clr-white: white;
+}
+
+body {
+  font-family: var(--font-main);
+  background: radial-gradient(
+    circle at top,
+    hsl(214, 47%, 23%),
+    hsl(237, 49%, 15%)
+  );
+  width: 100vw;
+  height: 100vh;
+
+  .game-wrapper {
+    padding: 1rem;
+    margin-inline: auto;
+    max-width: 1366px;
+  }
+}
