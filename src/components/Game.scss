@@ -1,8 +1,7 @@
 .game-container {
-  position: absolute;
-  bottom: 40%;
-  right: 50%;
-  transform: translate(50%, 50%);
+  margin-inline: auto;
+  margin-top: 6rem;
+  position: relative;
   background-image: url("../assets/bg-pentagon.svg");
   background-size: contain;
   background-repeat: no-repeat;
@@ -11,6 +10,9 @@
   @media screen and (min-width: 700px) {
     letter-spacing: 3px;
     font-size: 1.2rem;
-    max-width: 350px;
+    max-width: 340px;
+  }
+  @media screen and (min-width: 1600px) {
+    margin-top: 8rem;
   }
 }

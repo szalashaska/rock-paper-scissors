@@ -2,10 +2,10 @@ $box-shadow-height: 5px;
 
 .game-button {
   position: absolute;
-
   box-shadow: inset 0 calc(-1 * $box-shadow-height) 0 rgba(65, 65, 70, 0.4);
   border: none;
   width: 40%;
+  cursor: pointer;
   &,
   .game-button__wrapper {
     border-radius: 50%;
@@ -19,6 +19,24 @@ $box-shadow-height: 5px;
     box-shadow: inset 0 5px 0 rgba(65, 65, 70, 0.4);
     background-color: var(--clr-white);
     width: 75%;
+
+    & img {
+      width: 60%;
+    }
+  }
+
+  &.rock {
+    background: linear-gradient(to bottom, var(--clr-rock));
+    bottom: 0;
+    right: 20%;
+    transform: translate(50%, 50%);
+  }
+
+  &.paper {
+    background: linear-gradient(to bottom, var(--clr-paper));
+    top: 40%;
+    right: 0;
+    transform: translate(50%, -50%);
   }
 
   &.scissors {
@@ -26,5 +44,19 @@ $box-shadow-height: 5px;
     top: 0;
     right: 50%;
     transform: translate(50%, -50%);
+  }
+
+  &.lizard {
+    background: linear-gradient(to bottom, var(--clr-lizard));
+    bottom: 0;
+    left: 20%;
+    transform: translate(-50%, 50%);
+  }
+
+  &.spock {
+    background: linear-gradient(to bottom, var(--clr-spock));
+    top: 40%;
+    left: 0;
+    transform: translate(-50%, -50%);
   }
 }
