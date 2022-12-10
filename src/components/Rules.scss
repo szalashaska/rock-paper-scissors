@@ -1,0 +1,50 @@
+.rules-button {
+  position: absolute;
+  bottom: 2rem;
+  padding: 0.5rem 2rem;
+  background-color: transparent;
+  color: var(--clr-white);
+  border-radius: 8px;
+  border: 3px solid var(--score-outline);
+  letter-spacing: 1px;
+  font-size: 1rem;
+  cursor: pointer;
+  @media screen and (min-width: 700px) {
+    bottom: 2rem;
+    right: 2rem;
+  }
+}
+
+.rules-display {
+  position: fixed;
+  padding: 2rem;
+  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .rules-display_close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+  }
+
+  .rules-display__container {
+    position: relative;
+    padding: 3rem 2rem 2rem 2rem;
+    border-radius: 10px;
+    background-color: var(--clr-white);
+
+    .rules-display__image {
+      width: 100%;
+    }
+  }
+}

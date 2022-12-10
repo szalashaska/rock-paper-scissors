@@ -4,11 +4,13 @@ import "./Game.scss";
 function Game() {
   return (
     <main className="game-container">
-      <Button avatar="rock" />
-      <Button avatar="scissors" />
-      <Button avatar="paper" />
-      <Button avatar="lizard" />
-      <Button avatar="spock" />
+      <div className="wrapper">
+        <Button avatar="rock" />
+        <Button avatar="scissors" />
+        <Button avatar="paper" />
+        <Button avatar="lizard" />
+        <Button avatar="spock" />
+      </div>
     </main>
   );
 }

@@ -20,8 +20,11 @@
   --clr-spock: hsl(189, 59%, 53%), hsl(189, 58%, 57%);
 }
 
-body {
+html {
   font-family: var(--font-main);
+}
+
+body {
   background: radial-gradient(
     circle at top,
     hsl(214, 47%, 23%),
@@ -32,8 +35,12 @@ body {
 
   .game-wrapper {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 1rem;
     margin-inline: auto;
     max-width: 1366px;
+    height: 100vh;
   }
 }
