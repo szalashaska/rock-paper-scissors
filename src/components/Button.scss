@@ -1,0 +1,30 @@
+$box-shadow-height: 5px;
+
+.game-button {
+  position: absolute;
+
+  box-shadow: inset 0 calc(-1 * $box-shadow-height) 0 rgba(65, 65, 70, 0.4);
+  border: none;
+  width: 40%;
+  &,
+  .game-button__wrapper {
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .game-button__wrapper {
+    box-shadow: inset 0 5px 0 rgba(65, 65, 70, 0.4);
+    background-color: var(--clr-white);
+    width: 75%;
+  }
+
+  &.scissors {
+    background: linear-gradient(to bottom, var(--clr-scissors));
+    top: 0;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+}
