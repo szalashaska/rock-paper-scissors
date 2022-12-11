@@ -1,0 +1,25 @@
+.contest-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 80%;
+
+  .contest__choice {
+    width: 30%;
+    @media screen and (min-width: 700px) {
+      width: 25%;
+    }
+  }
+
+  .contest-text {
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+    color: var(--clr-white);
+    @media screen and (min-width: 700px) {
+      font-size: 1.2rem;
+    }
+  }
+}

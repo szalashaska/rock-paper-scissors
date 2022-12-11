@@ -7,6 +7,7 @@ import Spock from "../assets/icon-spock.svg";
 
 type Props = {
   avatar: string;
+  picked?: boolean;
 };
 
 type AvatarImage = {
@@ -27,11 +28,17 @@ const avatarImage: AvatarImage = {
 
 const accepted: string[] = ["rock", "paper", "scissors", "lizard", "spock"];
 
-function Button({ avatar }: Props) {
+function Button({ avatar, picked }: Props) {
   if (!accepted.includes(avatar)) return null;
 
+  const handlePlayerPick = () => {};
+
   return (
-    <button type="button" className={`game-button ${avatar}`}>
+    <button
+      onClick={handlePlayerPick}
+      type="button"
+      className={`game-button ${avatar} ${picked ? "picked" : ""}`}
+    >
       <div className="game-button__wrapper">
         <img
           src={avatarImage[avatar as keyof AvatarImage]}
@@ -41,5 +48,9 @@ function Button({ avatar }: Props) {
     </button>
   );
 }
+
+Button.defaultProps = {
+  picked: false,
+};
 
 export default Button;

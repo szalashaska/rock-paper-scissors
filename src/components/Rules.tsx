@@ -4,7 +4,7 @@ import GameRules from "../assets/image-rules-bonus.svg";
 import Close from "../assets/icon-close.svg";
 
 function Rules() {
-  const [isActive, setIsActive] = useState(true);
+  const [isActive, setIsActive] = useState(false);
   return (
     <>
       {isActive && (

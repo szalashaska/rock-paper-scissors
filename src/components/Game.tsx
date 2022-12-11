@@ -1,16 +1,12 @@
-import Button from "./Button";
+import Contest from "./Contest";
+// import Options from "./Options";
 import "./Game.scss";
 
 function Game() {
   return (
     <main className="game-container">
-      <div className="wrapper">
-        <Button avatar="rock" />
-        <Button avatar="scissors" />
-        <Button avatar="paper" />
-        <Button avatar="lizard" />
-        <Button avatar="spock" />
-      </div>
+      {/* <Options /> */}
+      <Contest />
     </main>
   );
 }
