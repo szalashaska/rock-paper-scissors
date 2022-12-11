@@ -1,25 +1,49 @@
 .contest-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  width: 80%;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1.75rem;
+  width: 100%;
+  @media screen and (min-width: 700px) {
+    gap: 3rem;
+
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1000px;
+  }
 
   .contest__choice {
-    width: 30%;
+    width: 45%;
+    max-width: 210px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 2rem;
+
     @media screen and (min-width: 700px) {
+      flex-direction: column;
       width: 25%;
+      gap: 3.5rem;
     }
   }
 
   .contest-text {
     text-align: center;
-    font-size: 1rem;
+    font-size: 0.9rem;
     letter-spacing: 1px;
-    margin-bottom: 2rem;
     color: var(--clr-white);
     @media screen and (min-width: 700px) {
       font-size: 1.2rem;
+    }
+  }
+
+  .result-container {
+    width: 100%;
+    order: 3;
+    margin-top: 2rem;
+    @media screen and (min-width: 700px) {
+      width: 35%;
+      order: 0;
     }
   }
 }

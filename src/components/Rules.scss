@@ -1,16 +1,15 @@
 .rules-button {
-  position: absolute;
-  bottom: 2rem;
-  padding: 0.5rem 2rem;
   background-color: transparent;
   color: var(--clr-white);
   border-radius: 8px;
   border: 3px solid var(--score-outline);
   letter-spacing: 1px;
   font-size: 1rem;
+  padding: 0.4rem 2rem;
   cursor: pointer;
   transition: box-shadow 0.4s ease;
   @media screen and (min-width: 700px) {
+    position: absolute;
     bottom: 2rem;
     right: 2rem;
   }
