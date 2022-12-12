@@ -6,4 +6,10 @@
   width: 60%;
   max-width: 340px;
   aspect-ratio: 329 / 313;
+  transition: all 1s ease;
+
+  &.hide {
+    transform: scale(0);
+    width: 0;
+  }
 }

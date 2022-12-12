@@ -1,12 +1,15 @@
+import { useContext } from "react";
 import "./Button.scss";
 import Rock from "../assets/icon-rock.svg";
 import Paper from "../assets/icon-paper.svg";
 import Scissors from "../assets/icon-scissors.svg";
 import Lizard from "../assets/icon-lizard.svg";
 import Spock from "../assets/icon-spock.svg";
+import { avatarList, Avatars } from "../helpers/utils";
+import GameContext from "../contexts/GameContext";
 
 type Props = {
-  avatar: string;
+  avatar: Avatars;
   picked?: boolean;
 };
 
@@ -26,16 +29,19 @@ const avatarImage: AvatarImage = {
   spock: Spock,
 };
 
-const accepted: string[] = ["rock", "paper", "scissors", "lizard", "spock"];
-
 function Button({ avatar, picked }: Props) {
-  if (!accepted.includes(avatar)) return null;
+  const { setPlayerChoice } = useContext(GameContext);
 
-  const handlePlayerPick = () => {};
+  if (!avatarList.includes(avatar)) return null;
+
+  const handlePlayerPick = () => {
+    if (picked) return;
+    setPlayerChoice(avatar);
+  };
 
   return (
     <button
-      onClick={handlePlayerPick}
+      onClick={() => handlePlayerPick()}
       type="button"
       className={`game-button ${avatar} ${picked ? "picked" : ""}`}
     >

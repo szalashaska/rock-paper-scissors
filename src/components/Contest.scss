@@ -4,13 +4,19 @@
   justify-content: space-around;
   gap: 1.75rem;
   width: 100%;
+  transition: all 1s ease;
+
   @media screen and (min-width: 700px) {
     gap: 3rem;
-
     align-items: center;
     justify-content: center;
     width: 100%;
     max-width: 1000px;
+  }
+
+  &.hide {
+    transform: scale(0);
+    width: 0;
   }
 
   .contest__choice {

@@ -20,6 +20,15 @@
   margin-inline: auto;
   cursor: pointer;
   font-size: 0.8rem;
+  transition: all 0.3s ease;
+  &:hover,
+  &:focus {
+    color: var(--clr-white);
+    outline: 3px solid var(--score-outline);
+    background-color: transparent;
+    box-shadow: 0px 0px 30px 10px rgba(255, 255, 255, 0.1);
+    letter-spacing: 2.5px;
+  }
 
   @media screen and (min-width: 700px) {
     font-size: 1rem;

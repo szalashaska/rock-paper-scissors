@@ -1,12 +1,13 @@
+import { useContext } from "react";
+import GameContext from "../contexts/GameContext";
 import "./Score.scss";
-// type Props = {};
 
-// function Score({}: Props) {
 function Score() {
+  const { score } = useContext(GameContext);
   return (
     <div className="score-container">
       <span className="score-text">SCORE</span>
-      <span className="score-value">12</span>
+      <span className="score-value">{score}</span>
     </div>
   );
 }
