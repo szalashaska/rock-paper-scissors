@@ -1,3 +1,25 @@
+@keyframes up-and-down {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  55% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .score-container {
   background: var(--clr-white);
   padding: 0.5rem 1.5rem;
@@ -6,6 +28,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  overflow: hidden;
   @media screen and (min-width: 700px) {
     padding: 0.8rem 3rem;
   }
@@ -28,6 +51,10 @@
 
     @media screen and (min-width: 700px) {
       font-size: 4.5rem;
+    }
+
+    &.update {
+      animation: up-and-down var(--animation-updates-score-duration);
     }
   }
 }
