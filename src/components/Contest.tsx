@@ -106,7 +106,7 @@ function Contest() {
 
   return (
     <div className="contest-container hide shrink" ref={constestRef}>
-      <div className="contest__choice  hide" ref={playerRef}>
+      <div className="contest__choice hide" ref={playerRef}>
         <h2 className="contest-text">YOU PICKED</h2>
         {playerChoice && <Button avatar={playerChoice} picked />}
       </div>
