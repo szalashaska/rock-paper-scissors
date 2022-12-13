@@ -1,62 +1,44 @@
-import { useEffect, useRef, useContext, useCallback } from "react";
+import { useEffect, useRef, useContext } from "react";
 import { Avatars } from "../helpers/utils";
 import Button from "./Button";
 import GameContext from "../contexts/GameContext";
 
 import "./Options.scss";
-
-const ANIMATION_TIME = 1100;
+import {
+  hideOptionsDuration,
+  hideContestDuration,
+} from "../helpers/AnimationTime";
 
 function Options() {
   const { playerChoice } = useContext(GameContext);
   const optionsRef = useRef<HTMLDivElement>(null);
 
-  const hideOptionsContainer: (element: HTMLDivElement) => void = useCallback(
-    (element) => {
-      // eslint-disable-next-line
-      console.log("hide 1");
-      element.classList.add("shrink");
-      setTimeout(() => {
-        // eslint-disable-next-line
-        console.log("hide 2");
-        element.classList.add("hide");
-      }, ANIMATION_TIME);
-    },
-    [],
-  );
+  const hideOptionsContainer: (element: HTMLDivElement) => void = (element) => {
+    element.classList.add("shrink");
+    setTimeout(() => {
+      element.classList.add("hide");
+    }, hideOptionsDuration);
+  };
 
-  const showOptionsContainer: (element: HTMLDivElement) => void = useCallback(
-    (element) => {
-      // eslint-disable-next-line
-      console.log("show 1");
-      element.classList.remove("hide");
-      // Wait for contest element to hide
-      setTimeout(() => {
-        // eslint-disable-next-line
-        console.log("show 2");
-        element.classList.remove("shrink");
-      }, ANIMATION_TIME);
-    },
-    [],
-  );
+  const showOptionsContainer: (element: HTMLDivElement) => void = (element) => {
+    element.classList.remove("hide");
+    setTimeout(() => {
+      // Wait for results to hide
+      element.classList.remove("shrink");
+    }, hideContestDuration);
+  };
 
   useEffect(() => {
     if (!optionsRef.current) return;
 
-    // Hide element after player's choice
     if (playerChoice) {
-      // eslint-disable-next-line
-      console.log("hide");
+      // Hide element after player's choice
       hideOptionsContainer(optionsRef.current);
-
+    } else if (playerChoice === Avatars.RESET) {
       // Show element after player clicked play again
-    } else {
-      // eslint-disable-next-line
-      console.log("show");
-
       showOptionsContainer(optionsRef.current);
     }
-  }, [playerChoice, hideOptionsContainer, showOptionsContainer]);
+  }, [playerChoice]);
 
   return (
     <div className="options-container" ref={optionsRef}>

@@ -18,6 +18,13 @@
   --clr-rock: hsl(349, 71%, 52%), hsl(349, 70%, 56%);
   --clr-lizard: hsl(261, 73%, 60%), hsl(261, 72%, 63%);
   --clr-spock: hsl(189, 59%, 53%), hsl(189, 58%, 57%);
+
+  // Make sure to match ts variables in AnimationTime.ts
+  --animation-duration: 1s;
+  --animation-hide-options-duration: 1s;
+  --animation-hide-contest-duration: 0.8s;
+  --animation-show-choices-duration: 0.75s;
+  --animation-show-result-duration: 0.5s;
 }
 
 html {

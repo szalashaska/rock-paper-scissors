@@ -6,7 +6,8 @@ $box-shadow-height: 5px;
   border: none;
   width: 40%;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease,
+    box-shadow calc(2 * var(--animation-show-result-duration));
 
   &,
   .game-button__wrapper {

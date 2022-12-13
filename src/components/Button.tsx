@@ -36,6 +36,7 @@ function Button({ avatar, picked }: Props) {
 
   const handlePlayerPick = () => {
     if (picked) return;
+
     setPlayerChoice(avatar);
   };
 

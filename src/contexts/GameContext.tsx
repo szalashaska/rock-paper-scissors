@@ -13,8 +13,8 @@ import {
   Results,
 } from "../helpers/utils";
 
-type GameType = {
-  playerChoice: Avatars;
+export type GameType = {
+  playerChoice: Avatars | null;
   AIchoice: Avatars;
   result: Results;
   score: number;
@@ -26,7 +26,7 @@ type Props = {
 };
 
 const GameContext = createContext<GameType>({
-  playerChoice: Avatars.RESET,
+  playerChoice: null,
   AIchoice: Avatars.RESET,
   result: Results.RESET,
   score: 0,
@@ -36,7 +36,7 @@ const GameContext = createContext<GameType>({
 export default GameContext;
 
 export function GameProvider({ children }: Props) {
-  const [playerChoice, setPlayerChoice] = useState<Avatars>(Avatars.RESET);
+  const [playerChoice, setPlayerChoice] = useState<Avatars | null>(null);
   const [AIchoice, setAIchoice] = useState<Avatars>(Avatars.RESET);
   const [result, setResult] = useState<Results>(Results.RESET);
   const [score, setScore] = useState<number>(0);
@@ -45,7 +45,10 @@ export function GameProvider({ children }: Props) {
     if (playerChoice) {
       const choiceIndex = Math.floor(Math.random() * 5);
       setAIchoice(avatarList[choiceIndex]);
-    } else setAIchoice(Avatars.RESET);
+    } else {
+      setAIchoice(Avatars.RESET);
+      setResult(Results.RESET);
+    }
   }, [playerChoice]);
 
   useEffect(() => {

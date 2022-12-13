@@ -1,82 +1,61 @@
 import { useContext, useRef, useEffect, useCallback } from "react";
 import GameContext from "../contexts/GameContext";
+import {
+  hideOptionsDuration,
+  hideContestDuration,
+  showResultsDuration,
+  showChoicesDuration,
+  showChoicesDelay,
+} from "../helpers/AnimationTime";
+import { Avatars, Results } from "../helpers/utils";
 import Button from "./Button";
 import "./Contest.scss";
 import Result from "./Result";
-
-const ANIMATION_TIME = 1000;
 
 function Contest() {
   const constestRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<HTMLDivElement>(null);
   const AIRef = useRef<HTMLDivElement>(null);
   const resultRef = useRef<HTMLDivElement>(null);
-  const { playerChoice, AIchoice } = useContext(GameContext);
+  const { playerChoice, AIchoice, result } = useContext(GameContext);
 
-  const showContestContainer: (element: HTMLDivElement) => Promise<void> = (
+  const showElement: (
+    element: HTMLDivElement,
+    animationDuration: number,
+    className: string,
+  ) => Promise<void> = (element, animationDuration, className) => {
+    return new Promise((resolve) => {
+      element.classList.remove(className);
+      setTimeout(() => {
+        resolve();
+      }, animationDuration);
+    });
+  };
+
+  const hideElement: (element: HTMLDivElement, className: string) => void = (
     element,
+    className,
   ) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        element.classList.remove("hide");
-        resolve();
-      }, ANIMATION_TIME);
-    });
+    element.classList.add(className);
   };
 
-  const showPlayerChoice: (element: HTMLDivElement) => Promise<void> = (
-    element,
-  ) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        element.classList.remove("hide");
-        resolve();
-      }, ANIMATION_TIME);
-    });
-  };
+  const handleWinnerAnimation: (action: string) => void = useCallback(
+    (action) => {
+      if (result === Results.DRAW || result === Results.RESET) return;
+      const winner = result === Results.WIN ? playerRef.current : AIRef.current;
 
-  const showAIChoice: (element: HTMLDivElement) => Promise<void> = (
-    element,
-  ) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        element.classList.remove("hide");
-        resolve();
-      }, ANIMATION_TIME);
-    });
-  };
+      if (action === "add") {
+        winner?.classList.add("winner");
+      }
 
-  const showResult: (element: HTMLDivElement) => Promise<void> = (element) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        element.classList.remove("hide");
-        resolve();
-      }, ANIMATION_TIME);
-    });
-  };
-
-  const handleShowAnimation: (
-    elem1: HTMLDivElement,
-    elem2: HTMLDivElement,
-    elem3: HTMLDivElement,
-    elem4: HTMLDivElement,
-  ) => void = useCallback(async (elem1, elem2, elem3, elem4) => {
-    await showContestContainer(elem1);
-    await showPlayerChoice(elem2);
-    await showAIChoice(elem3);
-    await showResult(elem4);
-  }, []);
-
-  const hideContainer: (element: HTMLDivElement) => void = useCallback(
-    (element) => {
-      element.classList.add("hide");
-      // setTimeout(() => {
-      // }, ANIMATION_TIME);
+      if (action === "remove") {
+        winner?.classList.remove("winner");
+      }
     },
-    [],
+    [result],
   );
 
-  useEffect(() => {
+  const handleShowAnimation: () => void = useCallback(async () => {
     if (
       !constestRef.current ||
       !playerRef.current ||
@@ -84,34 +63,57 @@ function Contest() {
       !resultRef.current
     )
       return;
+    await showElement(constestRef.current, hideOptionsDuration, "shrink");
+    await showElement(constestRef.current, showChoicesDelay, "hide");
+    await showElement(playerRef.current, showChoicesDuration, "hide");
+    await showElement(AIRef.current, showChoicesDuration, "hide");
 
+    handleWinnerAnimation("add");
+
+    await showElement(resultRef.current, showResultsDuration, "shrink");
+    await showElement(resultRef.current, showResultsDuration, "transparent");
+  }, [handleWinnerAnimation]);
+
+  const handleHideAnimation: () => void = useCallback(() => {
+    if (
+      !constestRef.current ||
+      !playerRef.current ||
+      !AIRef.current ||
+      !resultRef.current
+    )
+      return;
+    hideElement(playerRef.current, "hide");
+    hideElement(AIRef.current, "hide");
+    hideElement(resultRef.current, "shrink");
+    hideElement(resultRef.current, "transparent");
+    hideElement(constestRef.current, "shrink");
+    handleWinnerAnimation("remove");
+    // Hide element after animation
+    setTimeout(() => {
+      constestRef.current?.classList.add("hide");
+    }, hideContestDuration);
+  }, [handleWinnerAnimation]);
+
+  useEffect(() => {
     // Wait for options to hide and show contest container
     if (playerChoice) {
-      handleShowAnimation(
-        constestRef.current,
-        playerRef.current,
-        AIRef.current,
-        resultRef.current,
-      );
+      handleShowAnimation();
       // Hide contest container
-    } else {
-      hideContainer(constestRef.current);
-      hideContainer(playerRef.current);
-      hideContainer(AIRef.current);
-      hideContainer(resultRef.current);
+    } else if (playerChoice === Avatars.RESET) {
+      handleHideAnimation();
     }
-  }, [playerChoice, handleShowAnimation, hideContainer]);
+  }, [playerChoice, handleShowAnimation, handleHideAnimation]);
 
   return (
-    <div className="contest-container hide" ref={constestRef}>
-      <div className="contest__choice player-choice hide" ref={playerRef}>
+    <div className="contest-container hide shrink" ref={constestRef}>
+      <div className="contest__choice  hide" ref={playerRef}>
         <h2 className="contest-text">YOU PICKED</h2>
-        <Button avatar={playerChoice} picked />
+        {playerChoice && <Button avatar={playerChoice} picked />}
       </div>
-      <div className="result-container hide" ref={resultRef}>
+      <div className="result-container shrink transparent" ref={resultRef}>
         <Result />
       </div>
-      <div className="contest__choice ai-choice hide" ref={AIRef}>
+      <div className="contest__choice hide" ref={AIRef}>
         <h2 className="contest-text">THE HOUSE PICKED</h2>
         <Button avatar={AIchoice} picked />
       </div>
