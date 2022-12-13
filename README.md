@@ -4,8 +4,9 @@
 
 ## Welcome! 👋
 
-This is my solution to Frontend Mentor challenge.
-App is created with:
+Rock, paper, scissors, lizard spock game - created with React, using TypScript and Sass. This is a solution to Frontend Mentor challenge. Responsive design, no animation libraries.
+
+## Technologies
 
 - React
 - TypeScript
@@ -15,7 +16,7 @@ To maintain best practices i used eslint and husky.
 
 ## Live version
 
-You can check live version on [Here](https://www.vercel.com).
+You can check live version on [Here](https://rock-paper-scissors-lizard-spock-virid.vercel.app/).
 
 ## Setup
 
@@ -71,16 +72,4 @@ Not sure what Rock, Paper, Scissors, Lizard, Spock is? [Check out this clip from
 
 Want some support on the challenge? [Join our Slack community](https://www.frontendmentor.io/slack) and ask questions in the **#help** channel.
 
-## Where to find everything
-
-Your task is to build out the project to the designs inside the `/design` folder. You can either choose the `original` designs for the simpler version or the `bonus` designs for the harder version. You will find both mobile and desktop versions of the design to work to. Each file is also named depending on which step in the game the design is for.
-
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`.
-
-If you would like the design files (we provide Sketch & Figma versions) to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
-
-You will find all the required assets in the `/images` folder. The assets are already optimized.
-
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
-
-**Have fun building!** 🚀
+**Have fun playing!** 🚀
