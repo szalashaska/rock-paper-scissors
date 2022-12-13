@@ -4,7 +4,8 @@
 
 ## Welcome! 👋
 
-This is my solution to Frontend Mentor challenge. App is created with:
+This is my solution to Frontend Mentor challenge.
+App is created with:
 
 - React
 - TypeScript
@@ -18,7 +19,7 @@ You can check live version on [Here](https://www.vercel.com).
 
 ## Setup
 
-To run this project, download this project, open its directory, download pacages and run server:
+To run this project, download this repository, open its directory, download packages and run server:
 
 ```
 npm install
