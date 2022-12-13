@@ -50,6 +50,7 @@ export function GameProvider({ children }: Props) {
 
   useEffect(() => {
     if (!AIchoice || !playerChoice) return;
+
     if (AIchoice === playerChoice) {
       setResult(Results.DRAW);
     } else if (

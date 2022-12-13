@@ -8,8 +8,11 @@
   aspect-ratio: 329 / 313;
   transition: all 1s ease;
 
-  &.hide {
+  &.shrink {
     transform: scale(0);
-    width: 0;
+  }
+
+  &.hide {
+    display: none;
   }
 }
