@@ -1,4 +1,5 @@
 import "./App.scss";
+import Attribution from "./components/Attribution";
 import Game from "./components/Game";
 import Header from "./components/Header";
 import Rules from "./components/Rules";
@@ -11,6 +12,7 @@ function App() {
         <Header />
         <Game />
         <Rules />
+        <Attribution />
       </GameProvider>
     </div>
   );
