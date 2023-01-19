@@ -4,7 +4,7 @@
 
 ## Welcome! 👋
 
-Rock, paper, scissors, lizard spock game - created with React, using TypScript and Sass. This is a solution to Frontend Mentor challenge. Responsive design, no animation libraries.
+Rock, paper, scissors, lizard spock game - created with React, using TypeScript and Sass. This is a solution to Frontend Mentor challenge. Responsive design, no animation libraries.
 
 ## Technologies
 
